@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #000;
+  font-family: Arial, sans-serif;
+}
+
+canvas {
+  display: block;
+}
+
+#hud {
+  position: fixed;
+  top: 15px;
+  left: 20px;
+  right: 20px;
+  z-index: 5;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  text-shadow: 0 2px 5px black;
+}
+
+#hud h2 {
+  margin: 0;
+  letter-spacing: 3px;
+}
+
+#startScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: rgba(0,0,0,.55);
+}
+
+#startScreen h1 {
+  font-size: 55px;
+  letter-spacing: 8px;
+  margin: 0;
+}
+
+#startScreen p {
+  opacity: .8;
+}
+
+button {
+  background: #111;
+  color: white;
+  border: 1px solid #777;
+  border-radius: 12px;
+  padding: 15px 25px;
+  font-weight: bold;
+}
+
+#controls {
+  position: fixed;
+  bottom: 25px;
+  left: 0;
+  right: 0;
+  z-index: 6;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+#controls button {
+  width: 65px;
+  height: 55px;
+}
+
+@media (min-width: 800px) {
+  #controls {
+    display: none;
+  }
+}
