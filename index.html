@@ -1,2 +1,38 @@
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-<script src="game.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>LUNA Racing Game</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+</head>
+
+<body>
+
+  <div id="game">
+    <canvas id="gameCanvas"></canvas>
+
+    <div id="loading">
+      <h1>LUNA</h1>
+      <p>Loading Game...</p>
+    </div>
+
+    <div id="hud">
+      <div id="speed">0 KM/H</div>
+      <div id="score">SCORE: 0</div>
+    </div>
+
+    <div id="controls">
+      <button id="leftBtn">◀</button>
+      <button id="rightBtn">▶</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+
+</body>
+</html>
