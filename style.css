@@ -1,85 +1,287 @@
+/* ==============================
+   LUNA 3D RACING - STYLE.CSS
+   ============================== */
+
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  font-family: Arial, Helvetica, sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 body {
-  margin: 0;
-  overflow: hidden;
-  background: #000;
-  font-family: Arial, sans-serif;
+  position: fixed;
+  inset: 0;
 }
 
-canvas {
+/* GAME CANVAS */
+
+#game {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
   display: block;
+  touch-action: none;
 }
+
+/* HUD */
 
 #hud {
   position: fixed;
   top: 15px;
-  left: 20px;
-  right: 20px;
-  z-index: 5;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  font-weight: bold;
-  text-shadow: 0 2px 5px black;
+  left: 15px;
+  z-index: 10;
+
+  min-width: 180px;
+  padding: 12px 16px;
+
+  color: #fff;
+  background: rgba(0, 0, 0, 0.42);
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 14px;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  text-shadow: 0 2px 5px #000;
+  pointer-events: none;
 }
 
 #hud h2 {
-  margin: 0;
-  letter-spacing: 3px;
+  margin: 0 0 6px;
+  font-size: 21px;
+  letter-spacing: 1px;
 }
+
+#hud div {
+  margin-top: 3px;
+  font-size: 15px;
+}
+
+/* START SCREEN */
 
 #startScreen {
   position: fixed;
   inset: 0;
-  z-index: 10;
+
+  z-index: 20;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
   color: white;
-  background: rgba(0,0,0,.55);
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(40, 40, 40, 0.25),
+      rgba(0, 0, 0, 0.88)
+    );
 }
 
 #startScreen h1 {
-  font-size: 55px;
-  letter-spacing: 8px;
   margin: 0;
+
+  font-size: clamp(38px, 10vw, 70px);
+  font-weight: 900;
+  letter-spacing: 5px;
+
+  text-shadow:
+    0 0 15px rgba(255,255,255,.25),
+    0 4px 12px #000;
 }
 
 #startScreen p {
-  opacity: .8;
+  margin: 10px 0 28px;
+
+  font-size: clamp(15px, 4vw, 21px);
+  opacity: .85;
 }
 
-button {
-  background: #111;
-  color: white;
-  border: 1px solid #777;
-  border-radius: 12px;
-  padding: 15px 25px;
-  font-weight: bold;
+/* START BUTTON */
+
+#startScreen button {
+  min-width: 190px;
+  padding: 16px 28px;
+
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 15px;
+
+  color: #fff;
+  background: rgba(20,20,20,.85);
+
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 1px;
+
+  box-shadow:
+    0 8px 30px rgba(0,0,0,.5),
+    inset 0 0 12px rgba(255,255,255,.06);
+
+  cursor: pointer;
+  touch-action: manipulation;
 }
+
+#startScreen button:active {
+  transform: scale(.96);
+}
+
+/* MOBILE CONTROLS */
 
 #controls {
   position: fixed;
-  bottom: 25px;
+
   left: 0;
   right: 0;
-  z-index: 6;
+  bottom: 24px;
+
+  z-index: 15;
+
   display: flex;
-  justify-content: center;
-  gap: 10px;
+  justify-content: space-between;
+
+  padding: 0 22px;
+
+  pointer-events: none;
 }
 
 #controls button {
-  width: 65px;
-  height: 55px;
+  width: 78px;
+  height: 65px;
+
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 18px;
+
+  color: white;
+  background: rgba(0,0,0,.48);
+
+  font-size: 32px;
+  font-weight: bold;
+
+  box-shadow:
+    0 6px 20px rgba(0,0,0,.45),
+    inset 0 0 12px rgba(255,255,255,.05);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  pointer-events: auto;
+  touch-action: manipulation;
 }
 
-@media (min-width: 800px) {
+#controls button:active {
+  transform: scale(.92);
+  background: rgba(255,255,255,.18);
+}
+
+/* NITRO BUTTON */
+
+#nitro {
+  position: fixed;
+
+  right: 25px;
+  bottom: 105px;
+
+  z-index: 16;
+
+  width: 105px;
+  height: 52px;
+
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 15px;
+
+  color: white;
+  background: rgba(210,45,20,.88);
+
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 1px;
+
+  box-shadow:
+    0 5px 20px rgba(0,0,0,.45),
+    0 0 15px rgba(255,70,20,.25);
+
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+#nitro:active {
+  transform: scale(.93);
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  #hud {
+    top: 10px;
+    left: 10px;
+    min-width: 160px;
+    padding: 9px 12px;
+  }
+
+  #hud h2 {
+    font-size: 18px;
+  }
+
+  #hud div {
+    font-size: 13px;
+  }
+
   #controls {
-    display: none;
+    bottom: 18px;
+    padding: 0 16px;
+  }
+
+  #controls button {
+    width: 70px;
+    height: 60px;
+    font-size: 28px;
+  }
+
+  #nitro {
+    right: 18px;
+    bottom: 92px;
+    width: 95px;
+    height: 48px;
+  }
+}
+
+/* LANDSCAPE MOBILE */
+
+@media (orientation: landscape) and (max-height: 500px) {
+
+  #hud {
+    transform: scale(.85);
+    transform-origin: top left;
+  }
+
+  #controls {
+    bottom: 12px;
+  }
+
+  #controls button {
+    width: 62px;
+    height: 52px;
+  }
+
+  #nitro {
+    bottom: 75px;
   }
 }
