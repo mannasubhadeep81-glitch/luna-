@@ -1,0 +1,29 @@
+name: Build LUMIRA Food APK
+on:
+  push:
+    branches: [main]
+    paths:
+      - "food-app/**"
+      - ".github/workflows/lumira-food-android.yml"
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: food-app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Build debug APK
+        run: gradle :app:assembleDebug --no-daemon
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: lumira-food-debug-apk
+          path: food-app/app/build/outputs/apk/debug/app-debug.apk
